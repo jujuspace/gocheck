@@ -69,16 +69,22 @@ Calculates theoretical distortion coefficients based on field of view.
 
 ```python
 import cv2
+import matplotlib.pyplot as plt
 import gocheck
 
 # Load and correct an image with 150° FOV
 corrected = gocheck.undistortion_fov('wide_angle_photo.jpg', fov=150)
 
-# Save the corrected image
+# Save the corrected image (BGR format)
 cv2.imwrite('corrected_photo.jpg', corrected)
 
-# Display the result
-cv2.imshow('Original vs Corrected', corrected)
+# For matplotlib display, convert to RGB
+corrected_rgb = cv2.cvtColor(corrected, cv2.COLOR_BGR2RGB)
+plt.imshow(corrected_rgb)
+plt.show()
+
+# For OpenCV display (BGR format)
+cv2.imshow('Corrected', corrected)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
@@ -93,6 +99,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Changelog
 
+- **v0.1.3**: Reverted to BGR output format to maintain OpenCV ecosystem consistency - use `cv2.cvtColor(result, cv2.COLOR_BGR2RGB)` for matplotlib display
 - **v0.1.2**: Fixed color display issue - function now returns RGB format compatible with matplotlib (no more cv2.cvtColor needed)
 - **v0.1.1**: Added direct import support - now you can use `gocheck.undistortion_fov()` instead of `gocheck.image_distortion.undistortion_fov()`
 - **v0.1.0**: Initial release with barrel distortion correction functionality

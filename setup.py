@@ -8,7 +8,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="gocheck",
-    version="0.1.2",
+    version="0.1.3",
     author="jujuspace",
     author_email="juseongparkai@gmail.com",
     description="A Python library for barrel distortion correction in wide-angle images",

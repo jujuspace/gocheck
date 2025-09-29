@@ -39,7 +39,4 @@ def undistortion_fov(image_path, fov):
     # 왜곡 보정
     undistorted = cv2.undistort(img, camera_matrix, dist_coeffs)
 
-    # BGR to RGB conversion for matplotlib compatibility
-    undistorted_rgb = cv2.cvtColor(undistorted, cv2.COLOR_BGR2RGB)
-
-    return undistorted_rgb
+    return undistorted
